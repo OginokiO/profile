@@ -1,0 +1,278 @@
+/* =========================================================
+   Design Tokens
+   ========================================================= */
+:root {
+  /* Colores */
+  --color-bg: #e5e5e5;
+  --color-surface: #ffffff;
+  --color-border: #eaeaea;
+  --color-text: #2e282a;
+  --color-primary: #14213d;
+  --color-primary-alt: #000000;
+  --color-accent: #fca311;
+  --color-text-invert: #ffffff;
+
+  /* Fonts */
+  --font-body: "Maven Pro", system-ui, -apple-system, sans-serif;
+  --font-heading: "Roboto", system-ui, sans-serif;
+  --font-display: "Trykker", Georgia, serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+
+  /* Ratios */
+  --radius-sm: 0.25em;
+  --radius-md: 0.5em;
+  --radius-full: 50%;
+
+  /* Shadows */
+  --shadow-card: 0 0 1em rgba(64, 61, 57, 0.1);
+  --shadow-pic: 0 0 1em rgba(64, 61, 57, 0.3);
+
+  /* Transitions */
+  --transition-fast: 0.3s ease;
+}
+
+/* =========================================================
+   Minimal Reset
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body,
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================================================
+   Base
+   ========================================================= */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   Layout
+   ========================================================= */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--space-md);
+  gap: var(--space-md);
+}
+
+.card {
+  background-color: var(--color-surface);
+  width: 100%;
+  max-width: 460px;
+  padding: var(--space-lg) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+/* =========================================================
+   Fonts
+   ========================================================= */
+.profile-title {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
+}
+
+.card-title {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.trykker-regular {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.profile-bio {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+
+.emoji {
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+
+/* =========================================================
+   Photo
+   ========================================================= */
+#profile-pic {
+  width: 200px;
+  height: 200px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-pic);
+  margin: 0 auto var(--space-md);
+}
+
+/* =========================================================
+   Buttons (BEM: .btn, .btn--primary)
+   ========================================================= */
+.btn {
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-invert);
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background-color: var(--color-primary-alt);
+  color: var(--color-bg);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   RRSS
+   ========================================================= */
+.list-rrss-inline {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.rrss-icon {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.list-rrss-inline a:hover .rrss-icon,
+.list-rrss-inline a:focus-visible .rrss-icon {
+  color: var(--color-primary-alt);
+  transform: translateY(-2px);
+}
+
+.list-rrss-inline a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 960px) {
+  .card {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 720px) {
+  .card {
+    max-width: 380px;
+  }
+
+  .profile-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.1rem);
+    letter-spacing: 0.1em;
+  }
+
+  .profile-bio {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .card {
+    padding: var(--space-md) var(--space-sm);
+    max-width: 100%;
+  }
+
+  .profile-title {
+    letter-spacing: 0.05em;
+    font-size: clamp(1.4rem, 6vw, 1.75rem);
+  }
+
+  .rrss-icon {
+    font-size: 2rem;
+  }
+
+  #profile-pic {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* =========================================================
+   Accessibility
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
